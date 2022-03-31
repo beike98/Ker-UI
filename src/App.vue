@@ -1,9 +1,17 @@
 <script setup lang="ts"></script>
 
 <template>
-  <router-link to="/tree">Tree</router-link>
-  <hr />
-  <router-view></router-view>
+  <div class="layout">
+    <ul class="menu">
+      <li>
+        <router-link to="/tree">Tree</router-link>
+      </li>
+      <li>
+        <router-link to="/table">Table</router-link>
+      </li>
+    </ul>
+    <router-view></router-view>
+  </div>
 </template>
 
 <style>
@@ -11,5 +19,12 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+.layout {
+  display: flex;
+}
+.menu {
+  width: 100px;
+  border-right: 1px solid #abcdef;
 }
 </style>
