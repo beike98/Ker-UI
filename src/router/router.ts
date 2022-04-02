@@ -1,9 +1,9 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
-import RootPage from '@/views/Root.vue';
+import RootPage from '@/views/RootPage.vue';
 import TreeDemo from '@/views/TreeDemo.vue';
 import TableDemo from '@/views/TableDemo.vue';
 import NProgress from 'nprogress';
-import 'nprogress/nprogress.css' // 进度条样式
+import 'nprogress/nprogress.css';
 
 const router = createRouter({
   history: createWebHashHistory(),

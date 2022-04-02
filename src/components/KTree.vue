@@ -14,12 +14,12 @@ const onExpanded = (id: string) => {
   current[0].expanded = !current[0].expanded;
 };
 const store = useStore();
-const selectedId = computed(()=>store.treeSelectedId);
+const selectedId = computed(() => store.treeSelectedId);
 const onSelected = (id: string) => {
   store.setTreeSelectedId(id);
 }
 const onClickOtherClearSelected = () => {
-  document.addEventListener('click',(event:Event)=>{
+  document.addEventListener('click',(event:Event) => {
   if ((event.target as HTMLElement).className !== 'k-tree-label-select') {
     store.setTreeSelectedId('');
   }
@@ -43,7 +43,7 @@ onClickOtherClearSelected();
           />
         </span>
         <span
-          :class="selectedId===id ? 'k-tree-label-select':'k-tree-label'"
+          :class="selectedId === id ? 'k-tree-label-select':'k-tree-label'"
           @click="onSelected(id)"
         >
           {{ label }}
