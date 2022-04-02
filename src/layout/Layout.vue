@@ -8,7 +8,10 @@ const menus = router.options.routes;
 <template>
   <div class="layout">
     <ul class="menu">
-      <li v-for="{name,path} in menus" :key="name">
+      <li
+        v-for="{name,path} in menus"
+        :key="name"
+      >
         <router-link :to="path">
           {{ name }}
         </router-link>
