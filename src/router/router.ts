@@ -1,11 +1,11 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
-import TreeDemo from '../examples/TreeDemo.vue';
-import TableDemo from '../examples/TableDemo.vue';
+import TreeDemo from '../views/TreeDemo.vue';
+import TableDemo from '../views/TableDemo.vue';
 const router = createRouter({
   history: createWebHashHistory(),
   routes: [
-    { path: '/tree', component: TreeDemo },
-    { path: '/table', component: TableDemo },
+    { name:'Tree', path: '/tree', component: TreeDemo },
+    { name:'Table',path: '/table', component: TableDemo },
   ],
 });
 
