@@ -18,6 +18,7 @@ const selectedId = computed(()=>store.treeSelectedId);
 const onSelected = (id: string) => {
   store.setTreeSelectedId(id);
 }
+// Click another area to clear the selection
 document.addEventListener('click',(event:Event)=>{
   if ((event.target as HTMLElement).className !== 'k-tree-label-select') {
     store.setTreeSelectedId('');
@@ -54,42 +55,50 @@ document.addEventListener('click',(event:Event)=>{
   </ul>
 </template>
 
-<style>
+<style lang="scss">
 .k-tree-ul {
   padding-left: 15px;
+
+  .k-tree-li {
+    list-style: none;
+    margin: 4px 2px;
+
+    .k-tree-active {
+      cursor: pointer;
+    }
+
+    .k-tree-icon-right {
+      display: inline-block;
+      width: 0;
+      height: 0;
+      border: 5px solid;
+      border-color: transparent transparent transparent black;
+    }
+
+    .k-tree-icon-bottom {
+      display: inline-block;
+      width: 0;
+      height: 0;
+      border: 5px solid;
+      border-color: black transparent transparent;
+      margin: 0 4px 0 -4px;
+    }
+
+    .k-tree-label {
+      padding: 2px;
+      border-radius: 2px;
+    }
+
+    .k-tree-label:hover {
+      background-color: rgb(0 0 0 / 10%);
+    }
+
+    .k-tree-label-select {
+      background-color: rgb(0 0 0 / 10%);
+      padding: 2px;
+      border-radius: 2px;
+    }
+  }
 }
-.k-tree-li {
-  list-style: none;
-  margin: 4px 2px;
-}
-.k-tree-active {
-  cursor: pointer;
-}
-.k-tree-icon-right {
-  display: inline-block;
-  width: 0;
-  height: 0;
-  border: 5px solid;
-  border-color: transparent transparent transparent black;
-}
-.k-tree-icon-bottom {
-  display: inline-block;
-  width: 0;
-  height: 0;
-  border: 5px solid;
-  border-color: black transparent transparent transparent;
-  margin: 0 4px 0 -4px;
-}
-.k-tree-label {
-  padding: 2px;
-  border-radius: 2px;
-}
-.k-tree-label:hover {
-  background-color: rgba(0,0,0,0.1);
-}
-.k-tree-label-select {
-  background-color: rgba(0,0,0,0.1);
-  padding: 2px;
-  border-radius: 2px;
-}
+
 </style>

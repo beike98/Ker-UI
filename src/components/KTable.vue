@@ -1,10 +1,7 @@
 <script setup lang="ts">
-// import {} from '../mock/TableData'
-import { tableData } from '@/mock/TableData'
 </script>
 
 <template>
-{{tableData}}
   <table
     class="k-table"
   >
@@ -30,11 +27,14 @@ import { tableData } from '@/mock/TableData'
   </table>
 </template>
 
-<style>
-table,th,td{
-  border: 1px solid black;
-}
-.k-table{
+<style lang="scss">
+.k-table {
   border-collapse: collapse;
+
+  table,
+  th,
+  td {
+    border: 1px solid black;
+  }
 }
 </style>

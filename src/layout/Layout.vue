@@ -23,17 +23,19 @@ const menus = router.options.routes;
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .layout {
   display: flex;
-}
-.menu {
-  width: 100px;
-  height: 100vh;
-  border-right: 1px solid #abcdef;
-  padding: 2px 5px;
-}
-.view {
-  margin-left: 2px;
+
+  .menu {
+    width: 100px;
+    height: 100vh;
+    border-right: 1px solid #abcdef;
+    padding: 2px 5px;
+  }
+
+  .view {
+    margin-left: 2px;
+  }
 }
 </style>
