@@ -2,7 +2,7 @@
 import { useRouter } from 'vue-router';
 
 const router = useRouter()
-const menus = router.options.routes;
+const menus = router.options.routes.filter(({name})=> name!=='Root');
 </script>
 
 <template>

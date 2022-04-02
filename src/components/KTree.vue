@@ -18,12 +18,14 @@ const selectedId = computed(()=>store.treeSelectedId);
 const onSelected = (id: string) => {
   store.setTreeSelectedId(id);
 }
-// Click another area to clear the selection
-document.addEventListener('click',(event:Event)=>{
+const onClickOtherClearSelected = () => {
+  document.addEventListener('click',(event:Event)=>{
   if ((event.target as HTMLElement).className !== 'k-tree-label-select') {
     store.setTreeSelectedId('');
   }
 })
+}
+onClickOtherClearSelected();
 </script>
 
 <template>
