@@ -3,9 +3,12 @@
   "private": true,
   "version": "0.0.1",
   "scripts": {
+    "start": "pnpm install",
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "./node_modules/.bin/eslint \"{src,types}/**/*.{vue,ts,tsx,d.ts}\" --fix",
+    "prepare": "husky install"
   },
   "dependencies": {
     "pinia": "^2.0.12",
@@ -13,7 +16,12 @@
     "vue-router": "^4.0.14"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.17.0",
+    "@typescript-eslint/parser": "^5.17.0",
     "@vitejs/plugin-vue": "^2.2.0",
+    "eslint": "^8.12.0",
+    "eslint-plugin-vue": "^8.5.0",
+    "husky": "^7.0.0",
     "typescript": "^4.5.4",
     "vite": "^2.8.0",
     "vue-tsc": "^0.29.8"

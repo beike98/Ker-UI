@@ -4,13 +4,17 @@
   <div class="layout">
     <ul class="menu">
       <li>
-        <router-link to="/tree">Tree</router-link>
+        <router-link to="/tree">
+          Tree
+        </router-link>
       </li>
       <li>
-        <router-link to="/table">Table</router-link>
+        <router-link to="/table">
+          Table
+        </router-link>
       </li>
     </ul>
-    <router-view></router-view>
+    <router-view />
   </div>
 </template>
 
@@ -25,6 +29,7 @@
 }
 .menu {
   width: 100px;
+  height: 100vh;
   border-right: 1px solid #abcdef;
 }
 </style>

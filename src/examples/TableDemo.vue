@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import Table from '../components/Table.vue';
+import KTable from '../components/KTable.vue';
 
 </script>
 
 <template>
-<Table></Table>
+  <KTable />
 </template>

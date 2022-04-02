@@ -3,5 +3,5 @@
 </script>
 
 <template>
-table
+  table
 </template>

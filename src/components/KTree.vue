@@ -3,12 +3,11 @@ import { reactive } from 'vue';
 import type { TreeNodeModel } from '../mock/treeData';
 const props = defineProps<{ data: TreeNodeModel[] }>();
 const _data = reactive(
-  props.data.map(({ id, label, children, level }) => {
+  props.data.map(({ id, label, children }) => {
     return {
       id,
       label,
       children,
-      level,
       expanded: false,
     };
   })
@@ -21,15 +20,24 @@ const onExpanded = (id: string) => {
 
 <template>
   <ul class="ul">
-    <li class="ul-li" v-for="{ id, label, children, level, expanded } in _data" :key="id">
-      <span class="ul-li-active" @click="onExpanded(id)">
+    <li
+      v-for="{ id, label, children, expanded } in _data"
+      :key="id"
+      class="ul-li"
+    >
+      <span class="ul-li-active">
         <span v-if="children?.length">
-          <span :class="expanded ? 'ul-li-bottom' : 'ul-li-right'" />
+          <span
+            :class="expanded ? 'ul-li-bottom' : 'ul-li-right'"
+            @click="onExpanded(id)"
+          />
         </span>
-        <!-- <span>{{ level }}</span> -->
         <span>{{ label }}</span>
       </span>
-      <Tree v-if="children?.length && expanded" :data="children" />
+      <KTree
+        v-if="children?.length && expanded"
+        :data="children"
+      />
     </li>
   </ul>
 </template>
