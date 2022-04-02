@@ -1,13 +1,5 @@
 <script setup lang="ts">
 import { tableData } from '@/mock/TableData';
-const titles = Object.keys(tableData[0])
-const items :any[] = [];
-tableData.forEach((item :any,index) => {
-  items.push([]);
-  titles.forEach((title :string) => {
-    items[index].push(item[title])
-  })
-})
 </script>
 
 <template>
@@ -17,23 +9,23 @@ tableData.forEach((item :any,index) => {
     <thead>
       <tr>
         <th
-          v-for="title in titles"
-          :key="title"
+          v-for="(_,key) of tableData[0]"
+          :key="key"
         >
-          {{ title }}
+          {{ key }}
         </th>
       </tr>
     </thead>
     <tbody>
       <tr
-        v-for="item in items"
-        :key="item.key"
+        v-for="index in tableData.length"
+        :key="index"
       >
         <td
-          v-for="ite in item"
-          :key="ite"
+          v-for="(item,key) of tableData[index]"
+          :key="key"
         >
-          {{ ite }}
+          {{ item }}
         </td>
       </tr>
     </tbody>
