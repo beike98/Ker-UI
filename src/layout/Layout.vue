@@ -17,7 +17,9 @@ const menus = router.options.routes;
         </router-link>
       </li>
     </ul>
-    <router-view />
+    <div class="view">
+      <router-view />
+    </div>
   </div>
 </template>
 
@@ -29,5 +31,9 @@ const menus = router.options.routes;
   width: 100px;
   height: 100vh;
   border-right: 1px solid #abcdef;
+  padding: 2px 5px;
+}
+.view {
+  margin-left: 2px;
 }
 </style>

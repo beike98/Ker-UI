@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import KTree from '../components/KTree.vue';
-import { treeData } from '../mock/treeData';
+import KTree from '@/components/KTree.vue';
+import { treeData } from '@/mock/treeData';
 
 </script>
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed,reactive } from 'vue';
-import type { TreeNodeModel } from '../mock/treeData';
-import { useStore } from '../store/store';
+import type { TreeNodeModel } from '@/mock/treeData';
+import { useStore } from '@/store/store';
 const props = defineProps<{ data: TreeNodeModel[] }>();
 const _data = reactive(props.data.map(({ id, label, children }) => ({
       id,

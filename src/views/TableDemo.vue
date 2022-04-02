@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import KTable from '../components/KTable.vue';
+import KTable from '@/components/KTable.vue';
 
 </script>
 
