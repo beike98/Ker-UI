@@ -1,32 +1,3 @@
-export const tableColumns = [
-  {
-    dataIndex: 'name',
-    key: 'name',
-    slots: { title: 'customTitle', customRender: 'name' },
-  },
-  {
-    title: 'Age',
-    dataIndex: 'age',
-    key: 'age',
-  },
-  {
-    title: 'Address',
-    dataIndex: 'address',
-    key: 'address',
-  },
-  {
-    title: 'Tags',
-    key: 'tags',
-    dataIndex: 'tags',
-    slots: { customRender: 'tags' },
-  },
-  {
-    title: 'Action',
-    key: 'action',
-    slots: { customRender: 'action' },
-  },
-];
-
 export const tableData = [
   {
     key: '1',

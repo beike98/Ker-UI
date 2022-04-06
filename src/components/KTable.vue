@@ -22,7 +22,7 @@ import { tableData } from '@/mock/TableData';
         :key="index"
       >
         <td
-          v-for="(item,key) of tableData[index]"
+          v-for="(item,key) of tableData[index-1]"
           :key="key"
         >
           {{ item }}
