@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { tableData } from '@/mock/TableData';
+const props = defineProps<{ data: any[] }>();
 </script>
 
 <template>
@@ -9,7 +9,7 @@ import { tableData } from '@/mock/TableData';
     <thead>
       <tr>
         <th
-          v-for="(_,key) of tableData[0]"
+          v-for="(_,key) of props.data[0]"
           :key="key"
         >
           {{ key }}
@@ -18,11 +18,11 @@ import { tableData } from '@/mock/TableData';
     </thead>
     <tbody>
       <tr
-        v-for="index in tableData.length"
+        v-for="index in props.data.length"
         :key="index"
       >
         <td
-          v-for="(item,key) of tableData[index-1]"
+          v-for="(item,key) of props.data[index-1]"
           :key="key"
         >
           {{ item }}
