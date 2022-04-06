@@ -1,5 +1,6 @@
 <script setup lang="ts">
-const props = defineProps<{ data: any[] }>();
+import { TableDataModel } from '@/mock/TableData';
+const props = defineProps<{ data: TableDataModel[] }>();
 </script>
 
 <template>
@@ -25,7 +26,12 @@ const props = defineProps<{ data: any[] }>();
           v-for="(item,key) of props.data[index-1]"
           :key="key"
         >
-          {{ item }}
+          <slot
+            :name="key" 
+            :item="item" 
+          >
+            {{ item }}
+          </slot>
         </td>
       </tr>
     </tbody>

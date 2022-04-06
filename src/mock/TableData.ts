@@ -1,3 +1,6 @@
+export interface TableDataModel {
+  [propName: string]: any;
+}
 export const tableData = [
   {
     key: '1',

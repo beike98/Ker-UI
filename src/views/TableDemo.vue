@@ -13,5 +13,24 @@ const data = tableData.map(({key,name,age,address,tags}) =>  ({
 </script>
 
 <template>
-  <KTable :data="data" />
+  <KTable :data="data">
+    <template #标签="{item}">
+      <ul>
+        <li
+          v-for="(i,index) in item"
+          :key="i"
+          class="item"
+        >
+          {{ i }}<span v-if="index!==item.length-1">/</span>
+        </li>
+      </ul>
+    </template>
+  </KTable>
 </template>
+
+<style scoped lang="scss">
+.item {
+  list-style: none;
+  display: inline;
+}
+</style>
