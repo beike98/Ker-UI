@@ -20,7 +20,7 @@ const onSelected = (id: string) => {
 }
 const onClickOtherClearSelected = () => {
   document.addEventListener('click',(event:Event) => {
-  if ((event.target as HTMLElement).className !== 'k-tree-label-select') {
+  if ((event.target as HTMLElement).className !== 'label-select') {
     store.setTreeSelectedId('');
   }
 })
@@ -33,17 +33,17 @@ onClickOtherClearSelected();
     <li
       v-for="{ id, label, children, expanded } in _data"
       :key="id"
-      class="k-tree-li"
+      class="li"
     >
-      <span class="k-tree-active">
+      <span class="active">
         <span v-if="children?.length">
           <span
-            :class="expanded ? 'k-tree-icon-bottom' : 'k-tree-icon-right'"
+            :class="expanded ? 'icon-bottom' : 'icon-right'"
             @click="onExpanded(id)"
           />
         </span>
         <span
-          :class="selectedId === id ? 'k-tree-label-select':'k-tree-label'"
+          :class="selectedId === id ? 'label-select':'label'"
           @click="onSelected(id)"
         >
           {{ label }}
@@ -61,15 +61,15 @@ onClickOtherClearSelected();
 .k-tree-ul {
   padding-left: 15px;
 
-  .k-tree-li {
+  .li {
     list-style: none;
     margin: 4px 2px;
 
-    .k-tree-active {
+    .active {
       cursor: pointer;
     }
 
-    .k-tree-icon-right {
+    .icon-right {
       display: inline-block;
       width: 0;
       height: 0;
@@ -77,7 +77,7 @@ onClickOtherClearSelected();
       border-color: transparent transparent transparent black;
     }
 
-    .k-tree-icon-bottom {
+    .icon-bottom {
       display: inline-block;
       width: 0;
       height: 0;
@@ -86,16 +86,16 @@ onClickOtherClearSelected();
       margin: 0 4px 0 -4px;
     }
 
-    .k-tree-label {
+    .label {
       padding: 2px;
       border-radius: 2px;
     }
 
-    .k-tree-label:hover {
+    .label:hover {
       background-color: rgb(0 0 0 / 10%);
     }
 
-    .k-tree-label-select {
+    .label-select {
       background-color: rgb(0 0 0 / 10%);
       padding: 2px;
       border-radius: 2px;
