@@ -1,6 +1,3 @@
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
-<template>
-  Welcome to <strong>Ker-UI</strong> !
-</template>
+<template>Welcome to <strong>Ker-UI</strong> !</template>

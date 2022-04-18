@@ -1,14 +1,16 @@
 <script setup lang="ts">
-import { computed,reactive } from 'vue';
-import type { TreeNodeModel } from '@/mock/treeData';
-import { useStore } from '@/store/store';
+import { computed, reactive } from "vue";
+import type { TreeNodeModel } from "@/mock/treeData";
+import { useStore } from "@/store/store";
 const props = defineProps<{ data: TreeNodeModel[] }>();
-const _data = reactive(props.data.map(({ id, label, children }) => ({
-      id,
-      label,
-      children,
-      expanded: false,
-    })))
+const _data = reactive(
+  props.data.map(({ id, label, children }) => ({
+    id,
+    label,
+    children,
+    expanded: false,
+  }))
+);
 const onExpanded = (id: string) => {
   const current = _data.filter(({ id: _id }) => id === _id);
   current[0].expanded = !current[0].expanded;
@@ -17,24 +19,20 @@ const store = useStore();
 const selectedId = computed(() => store.treeSelectedId);
 const onSelected = (id: string) => {
   store.setTreeSelectedId(id);
-}
+};
 const onClickOtherClearSelected = () => {
-  document.addEventListener('click',(event:Event) => {
-  if ((event.target as HTMLElement).className !== 'label-select') {
-    store.setTreeSelectedId('');
-  }
-})
-}
+  document.addEventListener("click", (event: Event) => {
+    if ((event.target as HTMLElement).className !== "label-select") {
+      store.setTreeSelectedId("");
+    }
+  });
+};
 onClickOtherClearSelected();
 </script>
 
 <template>
   <ul class="k-tree-ul">
-    <li
-      v-for="{ id, label, children, expanded } in _data"
-      :key="id"
-      class="li"
-    >
+    <li v-for="{ id, label, children, expanded } in _data" :key="id" class="li">
       <span class="active">
         <span v-if="children?.length">
           <span
@@ -43,16 +41,13 @@ onClickOtherClearSelected();
           />
         </span>
         <span
-          :class="selectedId === id ? 'label-select':'label'"
+          :class="selectedId === id ? 'label-select' : 'label'"
           @click="onSelected(id)"
         >
           {{ label }}
         </span>
       </span>
-      <KTree
-        v-if="children?.length && expanded"
-        :data="children"
-      />
+      <KTree v-if="children?.length && expanded" :data="children" />
     </li>
   </ul>
 </template>
@@ -102,5 +97,4 @@ onClickOtherClearSelected();
     }
   }
 }
-
 </style>

@@ -1,17 +1,14 @@
 <script setup lang="ts">
-import { useRouter } from 'vue-router';
+import { useRouter } from "vue-router";
 
-const router = useRouter()
-const menus = router.options.routes.filter(({name})=> name!=='Root');
+const router = useRouter();
+const menus = router.options.routes.filter(({ name }) => name !== "Root");
 </script>
 
 <template>
   <div class="layout">
     <ul class="menu">
-      <li
-        v-for="{name,path} in menus"
-        :key="name"
-      >
+      <li v-for="{ name, path } in menus" :key="name">
         <router-link :to="path">
           {{ name }}
         </router-link>
