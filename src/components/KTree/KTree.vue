@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { computed, reactive } from "vue";
+import { reactive } from "vue";
 import type { TreeNodeModel } from "@/mock/treeData";
-import { useStore } from "@/store/store";
+import { treeSelectedId, setTreeSelectedId } from "./selected";
 const props = defineProps<{ data: TreeNodeModel[] }>();
 const _data = reactive(
   props.data.map(({ id, label, children }) => ({
@@ -15,19 +15,14 @@ const onExpanded = (id: string) => {
   const current = _data.filter(({ id: _id }) => id === _id);
   current[0].expanded = !current[0].expanded;
 };
-const store = useStore();
-const selectedId = computed(() => store.treeSelectedId);
 const onSelected = (id: string) => {
-  store.setTreeSelectedId(id);
+  setTreeSelectedId(id);
 };
-const onClickOtherClearSelected = () => {
-  document.addEventListener("click", (event: Event) => {
-    if ((event.target as HTMLElement).className !== "label-select") {
-      store.setTreeSelectedId("");
-    }
-  });
-};
-onClickOtherClearSelected();
+document.addEventListener("click", (event: Event) => {
+  if ((event.target as HTMLElement).className !== "label-select") {
+    setTreeSelectedId("");
+  }
+});
 </script>
 
 <template>
@@ -41,7 +36,7 @@ onClickOtherClearSelected();
           />
         </span>
         <span
-          :class="selectedId === id ? 'label-select' : 'label'"
+          :class="treeSelectedId === id ? 'label-select' : 'label'"
           @click="onSelected(id)"
         >
           {{ label }}
