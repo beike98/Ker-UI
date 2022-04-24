@@ -1,23 +1,29 @@
-import { Ref } from "vue";
+import { Ref, UnwrapNestedRefs } from "vue";
+import { ConfigModel } from "./configModel";
 
-function draw(canvas: Ref<HTMLCanvasElement | null>) {
-  if (!canvas.value) return;
+/**
+ * draw 绘图逻辑
+ * @param canvas canvas实例
+ * @param config config配置
+ */
+const draw = (
+  canvas: Ref<HTMLCanvasElement | null>,
+  config: UnwrapNestedRefs<ConfigModel>
+) => {
+  if (!canvas.value || !config) return;
   canvas.value.style.borderRadius = "100px";
   const ctx = canvas.value.getContext("2d");
   if (!ctx) return;
-  ctx.fillStyle = "#6865DE";
-  ctx.fillRect(0, 0, 150, 12);
-  ctx.fillStyle = "#F4901D";
-  ctx.fillRect(150, 0, 150, 12);
-  ctx.fillStyle = "#0EC763";
-  ctx.fillRect(300, 0, 150, 12);
-  ctx.fillStyle = "#FF0000";
-  ctx.fillRect(450, 0, 150, 12);
-  ctx.fillStyle = "#FFFFFF";
-  ctx.fillText("45%", 70, 10);
-  ctx.fillText("45%", 230, 10);
-  ctx.fillText("45%", 370, 10);
-  ctx.fillText("45%", 530, 10);
-}
+  let start = 0;
+  config.params.forEach(({ color, progress }) => {
+    if (!progress) return;
+    const width = (config.size.width * progress) / 100;
+    ctx.fillStyle = color;
+    ctx.fillRect(start, 0, width, config.size.height);
+    start += width;
+    ctx.fillStyle = config.text.color;
+    ctx.fillText(progress + "%", start - width / 2 - 8, 10);
+  });
+};
 
 export { draw };

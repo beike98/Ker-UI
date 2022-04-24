@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { reactive } from "vue";
-import type { TreeNodeModel } from "@/mock/treeData";
+import { TreeNodeModel } from "@/mock/treeData";
 import { treeSelectedId, setTreeSelectedId } from "./selected";
 const props = defineProps<{ data: TreeNodeModel[] }>();
 const _data = reactive(
