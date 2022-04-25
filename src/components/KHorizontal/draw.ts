@@ -14,6 +14,15 @@ const draw = (
   canvas.value.style.borderRadius = "100px";
   const ctx = canvas.value.getContext("2d");
   if (!ctx) return;
+
+  // 适配两倍屏
+  const ratio = 2;
+  canvas.value.width = config.size.width * ratio;
+  canvas.value.height = config.size.height * ratio;
+  canvas.value.style.width = config.size.width + "px";
+  canvas.value.style.height = config.size.height + "px";
+  ctx.scale(ratio, ratio);
+
   let start = 0;
   config.params.forEach(({ color, progress }) => {
     if (!progress) return;

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import "@/assets/hidpi-canvas.min.js";
 import { onMounted, ref, UnwrapNestedRefs, watch } from "vue";
 import { draw } from "./draw";
 import { ConfigModel } from "./configModel";
@@ -14,10 +13,5 @@ watch(props.config, () => {
 </script>
 
 <template>
-  <canvas
-    ref="canvas"
-    :height="props.config.size.height"
-    :width="props.config.size.width"
-  >
-  </canvas>
+  <canvas ref="canvas"></canvas>
 </template>
